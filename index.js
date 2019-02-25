@@ -1,5 +1,29 @@
 #!/usr/bin/env node
+function runCmdHandler(dir, cmd) {
+  var process = null;
 
+  try {
+    process = spawnProcess(dir, cmd);
+  } catch (e) {
+    console.error("Error trying to execute command '" + cmd + "' in directory '" + dir + "'");
+    console.error(e);
+    console.log("error", e.message);
+    console.log("finished");
+    return;
+  }
+
+  process.stdout.on('data', function (data) {
+    console.log("progress", data.toString('utf-8'));
+  });
+
+  process.stderr.on('data', function (data) {
+    console.log("error", data.toString('utf-8'));
+  });
+
+  process.on('exit', function (code) {
+    console.log("finished");
+  });
+};
 const {
     spawn
 } = require('child_process');
@@ -10,6 +34,7 @@ const askQuestion = require('./_modules/askQuestion');
 var wd = process.cwd();
 let banner = require('./test.js');
 let minutes;
+let cd = process.cwd();
 banner += `
     -  Git Loop
 
@@ -108,19 +133,13 @@ xcon.post([{
                 color: '#00aa00',
                 bold: true
             }], () => {
-                let child;
+                runCmdHandler(".", `git add -A && sudo git commit -m "${new Date().getTime()}"`);
 
-				console.log(`every ${minutes} minute!`);
-				child = spawn(`git add -A && git commit -m "${new Date().getTime()}"`);
-				child.stdout.on('data', (data) => {
-					console.log(`child stdout:\n${data}`);
-					child.kill('SIGINT');
-				});
 
 
                 let Name_Of_Interval = setInterval(function () {
                     console.log(`every ${minutes} minute!`);
-					child = spawn('pwd');
+					child = spawn(`sudo git add -A && sudo git commit -m "${new Date().getTime()}"`);
 	                child.stdout.on('data', (data) => {
 	                    console.log(`child stdout:\n${data}`);
 						child.kill('SIGINT');
