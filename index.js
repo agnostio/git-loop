@@ -114,17 +114,13 @@ xcon.post([{
                     shell.echo('Error: Git commit failed')
                     shell.exit(1)
                 }
-				else{
-					console.log('booooo!!!!');
-				}
-                // let Name_Of_Interval = setInterval(function () {
-                //     console.log(`every ${minutes} minute!`);
-                //     child = spawn(`sudo git add -A && sudo git commit -m "${new Date().getTime()}"`);
-                //     child.stdout.on('data', (data) => {
-                //         console.log(`child stdout:\n${data}`);
-                //         child.kill('SIGINT');
-                //     });
-                // }, 60000 * minutes);
+
+                let Name_Of_Interval = setInterval(function () {
+                    if (shell.exec(`git add -A && sudo git commit -m "auto: ${new Date().getTime()}"`).code !== 0) {
+	                    shell.echo('Error: Git commit failed')
+	                    shell.exit(1)
+	                }
+                }, 60000 * minutes);
             });
         }
     });
