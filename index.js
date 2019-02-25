@@ -1,29 +1,6 @@
 #!/usr/bin/env node
-function runCmdHandler(dir, cmd) {
-  var process = null;
 
-  try {
-    process = spawnProcess(dir, cmd);
-  } catch (e) {
-    console.error("Error trying to execute command '" + cmd + "' in directory '" + dir + "'");
-    console.error(e);
-    console.log("error", e.message);
-    console.log("finished");
-    return;
-  }
-
-  process.stdout.on('data', function (data) {
-    console.log("progress", data.toString('utf-8'));
-  });
-
-  process.stderr.on('data', function (data) {
-    console.log("error", data.toString('utf-8'));
-  });
-
-  process.on('exit', function (code) {
-    console.log("finished");
-  });
-};
+var shell = require('shelljs')
 const {
     spawn
 } = require('child_process');
@@ -133,18 +110,21 @@ xcon.post([{
                 color: '#00aa00',
                 bold: true
             }], () => {
-                runCmdHandler(".", `git add -A && sudo git commit -m "${new Date().getTime()}"`);
-
-
-
-                let Name_Of_Interval = setInterval(function () {
-                    console.log(`every ${minutes} minute!`);
-					child = spawn(`sudo git add -A && sudo git commit -m "${new Date().getTime()}"`);
-	                child.stdout.on('data', (data) => {
-	                    console.log(`child stdout:\n${data}`);
-						child.kill('SIGINT');
-	                });
-                }, 60000 * minutes);
+                if (shell.exec(`git add -A && sudo git commit -m "auto: ${new Date().getTime()}"`).code !== 0) {
+                    shell.echo('Error: Git commit failed')
+                    shell.exit(1)
+                }
+				else{
+					console.log('booooo!!!!');
+				}
+                // let Name_Of_Interval = setInterval(function () {
+                //     console.log(`every ${minutes} minute!`);
+                //     child = spawn(`sudo git add -A && sudo git commit -m "${new Date().getTime()}"`);
+                //     child.stdout.on('data', (data) => {
+                //         console.log(`child stdout:\n${data}`);
+                //         child.kill('SIGINT');
+                //     });
+                // }, 60000 * minutes);
             });
         }
     });
