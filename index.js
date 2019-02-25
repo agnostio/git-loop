@@ -113,7 +113,7 @@ xcon.post([{
                 color: '#00aa00',
                 bold: true
             }], () => {
-                if (shell.exec(`git add -A && sudo git commit -m "auto: ${fDate(new Date())}"`).code !== 0) {
+                if (shell.exec(`git add -A && sudo git commit -m "Git Loop: ${fDate(new Date())}"`).code !== 0) {
                     shell.echo('Error: Git commit failed')
                     shell.exit(1)
                 }
