@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+const fDate = () => {
+	var d = new Date();
+
+    return "Last Sync: " + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + " @ " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+};
 var shell = require('shelljs')
 const {
     spawn
@@ -110,16 +115,15 @@ xcon.post([{
                 color: '#00aa00',
                 bold: true
             }], () => {
-                if (shell.exec(`git add -A && sudo git commit -m "auto: ${new Date().getTime()}"`).code !== 0) {
+                if (shell.exec(`git add -A && sudo git commit -m "auto: ${fDate(new Date().getTime())}"`).code !== 0) {
                     shell.echo('Error: Git commit failed')
                     shell.exit(1)
                 }
-
                 let Name_Of_Interval = setInterval(function () {
-                    if (shell.exec(`git add -A && sudo git commit -m "auto: ${new Date().getTime()}"`).code !== 0) {
-	                    shell.echo('Error: Git commit failed')
-	                    shell.exit(1)
-	                }
+                    if (shell.exec(`git add -A && sudo git commit -m "auto: ${fDate(new Date().getTime())}"`).code !== 0) {
+                        shell.echo('Error: Git commit failed')
+                        shell.exit(1)
+                    }
                 }, 60000 * minutes);
             });
         }
