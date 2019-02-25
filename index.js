@@ -98,12 +98,6 @@ xcon.post([{
                 });
             },
             (complete) => {
-                console.log('///////////');
-                console.log('///////////');
-                console.log('///////////');
-                console.log('///////////');
-                console.log('///////////');
-                console.log('///////////');
                 complete();
             }
         ],
