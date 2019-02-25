@@ -107,12 +107,14 @@ xcon.post([{
                 color: '#00aa00',
                 bold: true
             }], () => {
-                if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${fDate(new Date())}"`).code !== 0) {
-                    shell.echo('Error: Git commit failed')
+				let stamp = fDate(new Date());
+                if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
+                    shell.echo(`${stamp} - Error: Git commit failed`)
                 }
                 let Name_Of_Interval = setInterval(function () {
-                    if (shell.exec(`sudo git add -A && sudo git commit -m "auto: ${fDate(new Date())}"`).code !== 0) {
-                        shell.echo('Error: Git commit failed')
+					stamp = fDate(new Date());
+                    if (shell.exec(`sudo git add -A && sudo git commit -m "auto: ${stamp}"`).code !== 0) {
+                        shell.echo(`${stamp} - Error: Git commit failed`)
                     }
                 }, 60000 * minutes);
             });
