@@ -105,7 +105,7 @@ xcon.post([{
             xcon.post([{
                 txt: '\nSuccess!\n\n',
                 color: '#00aa00',
-                bold: true
+                bold: true,
             }], () => {
 				let stamp = fDate(new Date());
                 if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
