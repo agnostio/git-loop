@@ -1,0 +1,22 @@
+{
+  "name": "git-loop",
+  "version": "1.0.0",
+  "description": "ascii 2 module - This program converts txt ascii art to JS modules, escaping the needed characters for you.",
+  "main": "index.js",
+  "dependencies": {
+    "funccon": "^5.0.2",
+    "inquirer": "^6.2.2",
+    "inquirer-select-directory": "^1.2.0",
+    "x-con": "^4.0.1",
+    "xcolor": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index"
+  },
+  "bin": {
+    "gitl": "./index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
