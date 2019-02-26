@@ -122,7 +122,7 @@ xcon.post([{
 				}
 				else{
 					xcon.post([{
-		                txt: `\nGit Loop: ${stamp}\n\n`,
+		                txt: `\n    commit msg:  Git Loop: ${stamp}\n\n`,
 		                color: '#00aa00',
 		                bold: true,
 		            }], () => {});
