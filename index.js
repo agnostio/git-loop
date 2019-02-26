@@ -99,23 +99,38 @@ xcon.post([{
         done: () => {
 			let stamp = fDate(new Date());
 			if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
-				shell.echo(`${stamp} - Error: Git commit failed`)
+				xcon.post([{
+	                txt: '\nError:\n\n',
+	                color: '#d1a521',
+	                bold: true,
+	            }], () => {});
 			}
 			else{
-				console.log('yay');
+				xcon.post([{
+	                txt: '\nGit Loop: ${stamp}\n\n',
+	                color: '#00aa00',
+	                bold: true,
+	            }], () => {});
 			}
 			let Name_Of_Interval = setInterval(function () {
 				stamp = fDate(new Date());
-				if (shell.exec(`sudo git add -A && sudo git commit -m "auto: ${stamp}"`).code !== 0) {
-					shell.echo(`${stamp} - Error: Git commit failed`)
+				if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
+					xcon.post([{
+		                txt: '\nError:\n\n',
+		                color: '#d1a521',
+		                bold: true,
+		            }], () => {});
+				}
+				else{
+					xcon.post([{
+		                txt: '\nGit Loop: ${stamp}\n\n',
+		                color: '#00aa00',
+		                bold: true,
+		            }], () => {});
 				}
 			}, 60000 * minutes);
 
-            xcon.post([{
-                txt: '\nSuccess!\n\n',
-                color: '#00aa00',
-                bold: true,
-            }], () => {});
+
         }
     });
 });
