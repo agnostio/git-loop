@@ -100,7 +100,7 @@ xcon.post([{
 			let stamp = fDate(new Date());
 			if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
 				xcon.post([{
-	                txt: '\nError:\n\n',
+	                txt: '\nNothing to comit or bad repository\n\n',
 	                color: '#d1a521',
 	                bold: true,
 	            }], () => {});
@@ -116,7 +116,7 @@ xcon.post([{
 				stamp = fDate(new Date());
 				if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
 					xcon.post([{
-		                txt: '\nError:\n\n',
+		                txt: '\nNothing to comit or bad repository\n\n',
 		                color: '#d1a521',
 		                bold: true,
 		            }], () => {});
