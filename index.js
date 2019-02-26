@@ -113,7 +113,7 @@ xcon.post([{
 	                bold: true,
 	            }], () => {});
 			}
-			let Name_Of_Interval = setInterval(function () {
+			setInterval(function () {
 				stamp = fDate(new Date());
 				if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
 					xcon.post([{
