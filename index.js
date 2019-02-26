@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fDate = (d) => {
-    return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} - ${d.getHours()}:${d.getMinutes()}.${(d.getMilliseconds()/100).toString()}`;
+
+    return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} - ${d.getHours()}:${d.getMinutes()}.${(d.getMilliseconds()/100)}`;
 };
 var shell = require('shelljs')
 const fs = require('fs');
@@ -97,13 +98,7 @@ xcon.post([{
         ],
         done: () => {
 			let stamp = fDate(new Date());
-			if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
-				xcon.post([{
-	                txt: '\nNothing to comit or bad repository\n\n',
-	                color: '#d1a521',
-	                bold: true,
-	            }], () => {});
-			}
+			if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {}
 			else{
 				xcon.post([{
 	                txt: `\n    commit msg:  Git Loop: ${stamp}\n\n`,
@@ -113,13 +108,7 @@ xcon.post([{
 			}
 			setInterval(function () {
 				stamp = fDate(new Date());
-				if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {
-					xcon.post([{
-		                txt: '\nNothing to comit or bad repository\n\n',
-		                color: '#d1a521',
-		                bold: true,
-		            }], () => {});
-				}
+				if (shell.exec(`sudo git add -A && sudo git commit -m "Git Loop: ${stamp}"`).code !== 0) {}
 				else{
 					xcon.post([{
 		                txt: `\n    commit msg:  Git Loop: ${stamp}\n\n`,
