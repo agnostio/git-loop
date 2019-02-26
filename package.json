@@ -1,7 +1,7 @@
 {
   "name": "git-loop",
-  "version": "1.0.0",
-  "description": "ascii 2 module - This program converts txt ascii art to JS modules, escaping the needed characters for you.",
+  "version": "1.0.1",
+  "description": "This is a simple interactive CLI, which commits every 2, 5, 10, 15, 30, 45, or 60 minutes, with the date and time as the commit's message.",
   "main": "index.js",
   "dependencies": {
     "funccon": "^5.0.2",
