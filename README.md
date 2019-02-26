@@ -1,5 +1,5 @@
-#ascii 2 module
+#Git Loop
 
-ascii 2 module - This program converts txt ascii art to JS modules, escaping the needed characters for you.
+This is a simple interactive CLI, which commits every 2, 5, 10, 15, 30, 45, or 60 minutes, with the date and time as the commit's message.
 
-(interactive command line app, command is a2j)
+

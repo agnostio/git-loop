@@ -4,9 +4,6 @@ const fDate = (d) => {
     return d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 };
 var shell = require('shelljs')
-const {
-    spawn
-} = require('child_process');
 const fs = require('fs');
 const con = require('funccon');
 const xcon = require('x-con');
@@ -14,7 +11,6 @@ const askQuestion = require('./_modules/askQuestion');
 var wd = process.cwd();
 let banner = require('./test.js');
 let minutes;
-let cd = process.cwd();
 banner += `
     -  Git Loop
 
