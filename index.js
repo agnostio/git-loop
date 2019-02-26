@@ -107,7 +107,7 @@ xcon.post([{
 			}
 			else{
 				xcon.post([{
-	                txt: '\nGit Loop: ${stamp}\n\n',
+	                txt: `\nGit Loop: ${stamp}\n\n`,
 	                color: '#00aa00',
 	                bold: true,
 	            }], () => {});
@@ -123,7 +123,7 @@ xcon.post([{
 				}
 				else{
 					xcon.post([{
-		                txt: '\nGit Loop: ${stamp}\n\n',
+		                txt: `\nGit Loop: ${stamp}\n\n`,
 		                color: '#00aa00',
 		                bold: true,
 		            }], () => {});
