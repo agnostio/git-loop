@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const fDate = (d) => {
+	
     return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} - ${d.getHours()}:${d.getMinutes()}.${Math.round(d.getSeconds()/600)*10}`;
 };
 var shell = require('shelljs')
