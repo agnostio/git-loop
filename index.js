@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const fDate = (d) => {
-    return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} - ${d.getHours()}:${d.getMinutes()}.${(d.getMilliseconds()/1000).toString().replace('0.', '')}`;
+    return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} - ${d.getHours()}:${d.getMinutes()}.${(d.getMilliseconds()/100).toString()}`;
 };
 var shell = require('shelljs')
 const fs = require('fs');
